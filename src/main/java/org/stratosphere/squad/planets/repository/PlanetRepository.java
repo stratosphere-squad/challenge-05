@@ -46,6 +46,6 @@ public class PlanetRepository {
     }
 
     public void deleteByName(String name) {
-        planets = planets.stream().filter(planet -> planet.getName().equalsIgnoreCase(name)).collect(Collectors.toList());
+        planets.removeIf(planet -> planet.getName().equalsIgnoreCase(name));
     }
 }
