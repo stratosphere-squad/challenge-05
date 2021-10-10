@@ -1,0 +1,102 @@
+openapi: 3.0.3
+info:
+  title: Stratosphere Squad API
+  description: This API allows CRUD operations on an internal Planet registry
+  contact:
+    name: Quarkus
+    url: https://github.com/stratosphere-squad
+  version: "1.0"
+externalDocs:
+  description: All the RedHat Challenges
+  url: https://github.com/stratosphere-squad
+tags:
+  - name: api
+    description: Public that can be used by anybody
+  - name: planets
+    description: Anybody interested in documentation
+paths:
+  /api/v1/planets:
+    get:
+      summary: Returns all planets
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Planet'
+        "204":
+          description: No planets
+    put:
+      summary: Update an existing planet description
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Planet'
+      responses:
+        "200":
+          description: The updated Planet
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Planet'
+    post:
+      summary: Create a new Planet
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Planet'
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Planet'
+  /api/v1/planets/name/{name}:
+    get:
+      summary: Returns a planet by the name
+      parameters:
+        - name: name
+          in: path
+          description: Planet name
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Planet'
+        "204":
+          description: The planet is not found
+  /api/v1/planets/{name}:
+    delete:
+      summary: Deletes an exiting Planet
+      parameters:
+        - name: name
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "204": {}
+components:
+  schemas:
+    Planet:
+      required:
+        - description
+        - name
+      type: object
+      properties:
+        description:
+          type: string
+          nullable: false
+        name:
+          type: string
+          nullable: false
