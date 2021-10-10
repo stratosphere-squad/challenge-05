@@ -31,7 +31,6 @@ public class PlanetResource {
     @APIResponse(responseCode = "200",
             content = @Content(mediaType = APPLICATION_JSON,
                     schema = @Schema(implementation = Planet.class, type = SchemaType.ARRAY)))
-    @APIResponse(responseCode = "204", description = "No planets")
     @GET
     @Path("/")
     public Response getAllPlanets() {
@@ -42,9 +41,7 @@ public class PlanetResource {
 
     @Operation(summary = "Returns a planet by the name", description = "Get single planet")
     @APIResponse(responseCode = "200",
-            content = @Content(mediaType = APPLICATION_JSON,
-                    schema = @Schema(implementation = Planet.class)))
-    @APIResponse(responseCode = "204", description = "The planet is not found")
+            content = @Content(mediaType = APPLICATION_JSON, schema = @Schema(implementation = Planet.class)))
     @GET
     @Path("/name/{name}")
     public Response getPlanetByName(@Parameter(description = "Planet name", required = true) @PathParam("name") String name) {
@@ -60,8 +57,7 @@ public class PlanetResource {
 
     @Operation(summary = "Create a new Planet", description = "Create planet")
     @APIResponse(responseCode = "201",
-            content = @Content(mediaType = APPLICATION_JSON,
-            schema = @Schema(implementation = Planet.class)))
+            content = @Content(mediaType = APPLICATION_JSON, schema = @Schema(implementation = Planet.class)))
     @POST
     public Response createPlanet(@Valid Planet planet, @Context UriInfo uriInfo) {
         planet = planetService.createPlanet(planet);
@@ -81,8 +77,8 @@ public class PlanetResource {
         return Response.ok(planet).build();
     }
 
-    @Operation(summary = "Deletes an exiting Planet")
-    @APIResponse(responseCode = "204")
+    @Operation(summary = "Deletes an exiting Planet", description = "Delete Planet")
+    @APIResponse(responseCode = "204", description = "No content", content = @Content(schema = @Schema(implementation = Void.class)))
     @DELETE
     @Path("/{name}")
     public Response deletePlanet(@PathParam("name") String name) {
