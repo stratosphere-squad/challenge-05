@@ -1,3 +1,4 @@
+---
 openapi: 3.0.3
 info:
   title: Stratosphere Squad API
@@ -18,6 +19,7 @@ paths:
   /api/v1/planets:
     get:
       summary: Returns all planets
+      description: Get all planets
       responses:
         "200":
           description: OK
@@ -31,6 +33,7 @@ paths:
           description: No planets
     put:
       summary: Update an existing planet description
+      description: Update Planet
       requestBody:
         content:
           application/json:
@@ -45,6 +48,7 @@ paths:
                 $ref: '#/components/schemas/Planet'
     post:
       summary: Create a new Planet
+      description: Create planet
       requestBody:
         content:
           application/json:
@@ -59,6 +63,7 @@ paths:
   /api/v1/planets/name/{name}:
     get:
       summary: Returns a planet by the name
+      description: Get single planet
       parameters:
         - name: name
           in: path

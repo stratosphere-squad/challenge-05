@@ -27,7 +27,7 @@ public class PlanetResource {
     @Inject
     PlanetService planetService;
 
-    @Operation(summary = "Returns all planets")
+    @Operation(summary = "Returns all planets", description = "Get all planets")
     @APIResponse(responseCode = "200",
             content = @Content(mediaType = APPLICATION_JSON,
                     schema = @Schema(implementation = Planet.class, type = SchemaType.ARRAY)))
@@ -40,7 +40,7 @@ public class PlanetResource {
         return Response.ok(planets).build();
     }
 
-    @Operation(summary = "Returns a planet by the name")
+    @Operation(summary = "Returns a planet by the name", description = "Get single planet")
     @APIResponse(responseCode = "200",
             content = @Content(mediaType = APPLICATION_JSON,
                     schema = @Schema(implementation = Planet.class)))
@@ -58,10 +58,10 @@ public class PlanetResource {
         }
     }
 
-    @Operation(summary = "Create a new Planet")
+    @Operation(summary = "Create a new Planet", description = "Create planet")
     @APIResponse(responseCode = "201",
             content = @Content(mediaType = APPLICATION_JSON,
-            schema = @Schema(implementation = Planet.class, required = true)))
+            schema = @Schema(implementation = Planet.class)))
     @POST
     public Response createPlanet(@Valid Planet planet, @Context UriInfo uriInfo) {
         planet = planetService.createPlanet(planet);
@@ -70,7 +70,7 @@ public class PlanetResource {
         return Response.created(builder.build()).build();
     }
 
-    @Operation(summary = "Update an existing planet description")
+    @Operation(summary = "Update an existing planet description", description = "Update Planet")
     @APIResponse(responseCode = "200", description = "The updated Planet",
             content = @Content(mediaType = APPLICATION_JSON,
                     schema = @Schema(implementation = Planet.class)))
