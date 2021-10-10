@@ -1,0 +1,89 @@
+/*@article {Dibia2017,
+  author = {Victor, Dibia},
+  title = {HandTrack: A Library For Prototyping Real-time Hand TrackingInterfaces using Convolutional Neural Networks},
+  year = {2017},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  url = {https://github.com/victordibia/handtracking/tree/master/docs/handtrack.pdf},
+}*/
+
+@font-face {
+  font-family: "mario_kart";
+  src: url("../fonts/SuperMario256.ttf");
+}
+
+body {
+  font-family: "mario_kart";
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  background: url(../img/initialBackground.png);
+  background-size: cover;
+}
+
+.start-display {
+  position: absolute;
+  margin: 2vw;
+  top: 0vw;
+  color: #fff;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  display: none;
+}
+
+.mt10 {
+  margin-top: 10px;
+}
+
+
+.enabled {
+  background: #e93e4a;
+  font-size: 15px;
+}
+
+.intro {
+  font-size: 3rem;
+  max-font-size: 60px;
+  position: absolute;
+  width: 40%;
+  height: 20%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+}
+
+.small {
+  font-size: 2rem;
+}
+
+a:link {
+  color: #fcba03;
+}
+
+a:visited {
+  color: #fcba03;
+}
+
+a:hover {
+  color: #c2172b;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  animation: show 3s;
+}
+
+@keyframes show {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
