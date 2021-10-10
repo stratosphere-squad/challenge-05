@@ -56,7 +56,7 @@ public class PlanetResource {
     }
 
     @Operation(summary = "Create a new Planet", description = "Create planet")
-    @APIResponse(responseCode = "201",
+    @APIResponse(responseCode = "201", description = "Created Planet",
             content = @Content(mediaType = APPLICATION_JSON, schema = @Schema(implementation = Planet.class)))
     @POST
     public Response createPlanet(@Valid Planet planet, @Context UriInfo uriInfo) {

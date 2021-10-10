@@ -44,6 +44,21 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Planet'
+    post:
+      summary: Create a new Planet
+      description: Create planet
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Planet'
+      responses:
+        "201":
+          description: Created Planet
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Planet'
   /api/v1/planets/name/{name}:
     get:
       summary: Returns a planet by the name
