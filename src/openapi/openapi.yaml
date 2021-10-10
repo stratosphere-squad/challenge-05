@@ -108,3 +108,9 @@ components:
         name:
           type: string
           nullable: false
+  securitySchemes:
+    api-key:
+      type: apiKey
+      description: Use a 3scale API Key
+      name: api-key
+      in: header
